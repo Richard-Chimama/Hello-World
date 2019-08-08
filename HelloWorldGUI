@@ -1,0 +1,45 @@
+/*
+*this program uses GUI to prompt Hell world message on the screen
+*This is not the best way to write, but I feel it's a good GUI learning phase
+*As it cover a lot of consepts.
+*/
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+Class HelloWorldGUI {
+    //the class print the hello world on the screen using graphics component
+    public static void HelloWorldDisplay extends JPanel{
+      public void paintComponent(Graphics g){
+          super.paintComponent(g);
+          g.drawString("Hello World!", 20, 30);
+      }
+    }//end of HelloWorldDisplay class
+    
+    //the class handles the action of the button
+    public static void ButtonHandler implements ActionListener{
+      private void actionPerformed(ActionEvent e){
+          System.exit(0);
+      }
+    }// end of ButtonHandler class
+    
+    public static void main(String[] args){
+      HelloWorldDisplay display = new HelloWorldDisplay();
+      JButton okButton = new JButton("Ok");
+      ButtonHandler listen = new ButtonHandler();
+      okButton.add(ActionListener(listen));
+      
+      JPanel content = new JPanel();
+      content.setLayout(new BorderLayout());
+      content.add(display, BorderLayout(CENTER));
+      content.add(okButton, BorderLayout(SOUTH));
+      
+      JFrame window = new JFrame("GUI_Hello");
+      window.setSize(250, 300);
+      window.setLocation(100, 100);
+      window.setVisibble(true);
+     
+      
+    }
+}
